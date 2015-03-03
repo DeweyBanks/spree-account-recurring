@@ -1,11 +1,11 @@
 module Spree
-  class Recurring < ActiveRecord::Base
+  class Recurring < Spree::Base
     include RestrictiveDestroyer
 
     acts_as_restrictive_destroyer
 
-    preference :secret_key, :string
-    preference :public_key, :string
+    # preference :secret_key, :string
+    # preference :public_key, :string
 
     has_many :plans
     attr_readonly :type
