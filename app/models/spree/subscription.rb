@@ -13,7 +13,7 @@ module Spree
 
     validates :plan_id, :email, :user_id, presence: true
     validates :plan_id, uniqueness: { scope: [:user_id, :unsubscribed_at] }
-    validates :user_id, uniqueness: { scope: :unsubscribed_at }
+    #validates :user_id, uniqueness: { scope: :unsubscribed_at }
 
     delegate_belongs_to :plan, :api_plan_id
     before_validation :set_email, on: :create
