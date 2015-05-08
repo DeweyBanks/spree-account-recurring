@@ -27,7 +27,7 @@ module Spree
     end
 
     def find_subscription
-      render_status_ok unless @subscription = Spree::User.find_by(stripe_customer_id: event[:data][:object][:customer]).subscription
+      render_status_ok unless @subscription = Spree::Subscription.find_by(stripe_id: event[:data][:object][:id])
     end
 
     def retrieve_api_event
