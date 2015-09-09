@@ -8,8 +8,6 @@ module Spree
     attr_accessor :card_token
 
     belongs_to :plan
-    scope :monthly, where(:interval_count => 1)
-    scope :quarterly, where(:interval_count => 3)
     belongs_to :user
     has_many :events, class_name: 'Spree::SubscriptionEvent'
 
@@ -22,9 +20,6 @@ module Spree
 
     validate :verify_plan, on: :create
 
-    def self.monthly
-        plan.where(:interval_count => 1)
-    end
     private
 
     def set_email

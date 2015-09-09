@@ -13,6 +13,8 @@ module Spree
 
     before_validation :manage_default, if: :default_changed?
 
+    scope :monthly, -> { where(interval_count: 1)}
+    scope :quarterly, -> { where(interval_count: 3)}
     scope :active, -> { undeleted.where(active: true) }
     scope :visible, -> { active.joins(:recurring).where(["spree_recurrings.active = ? AND spree_recurrings.deleted_at IS NULL", true]) }
 
